@@ -8,6 +8,7 @@ spec:
   path: "./app/"
   postBuild:
     substitute:
+      cluster_aws_account_number: "${cluster_aws_account_number}"
       cluster_ingress_dns: "${cluster_ingress_dns}"
   prune: true
   sourceRef:
