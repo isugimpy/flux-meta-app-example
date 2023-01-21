@@ -1,0 +1,17 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-app-example
+  namespace: flux-app-example
+spec:
+  interval: 1m
+  path: "./app/"
+  postBuild:
+    substitute:
+      cluster_ingress_dns: "${cluster_ingress_dns}"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-app-example
+    namespace: flux-repos
+  targetNamespace: flux-app-example

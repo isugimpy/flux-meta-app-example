@@ -1,0 +1,28 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-meta-app-example
+  namespace: flux-meta-app-example
+spec:
+  interval: 1m
+  path: "./app/"
+  postBuild:
+    substitute:
+      # Replace these values with correct ones for the cluster
+      # account_shortname: "prod"
+      # cluster_aws_account_number: "111111111111"
+      # cluster_ingress_dns: "-cluster.vpc.region.mydomain.net"
+      # cluster_name: "prod-1.vpc.locale.account"
+      # cluster_shortname: "prod-1"
+      # cluster_vpc_name: "vpc"
+      account_shortname: "REPLACEME"
+      cluster_aws_account_number: "REPLACEME"
+      cluster_ingress_dns: "REPLACEME"
+      cluster_name: "REPLACEME"
+      cluster_shortname: "REPLACEME"
+      cluster_vpc_name: "REPLACEME"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-meta-app-example
+    namespace: flux-repos

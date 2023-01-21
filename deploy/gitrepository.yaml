@@ -1,0 +1,16 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: flux-meta-app-example
+  namespace: flux-repos
+spec:
+  interval: 1m
+  url: ssh://git@github.com/isugimpy/flux-meta-app-example
+  secretRef:
+    name: git-authentication
+  ref:
+    semver: "<1.0"
+  ignore: |
+    .git/
+    .github/
+    deploy/
